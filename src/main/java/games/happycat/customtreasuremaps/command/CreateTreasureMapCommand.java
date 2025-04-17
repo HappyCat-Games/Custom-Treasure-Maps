@@ -51,7 +51,7 @@ public class CreateTreasureMapCommand {
             player.drop(map, false);
         }
 
-        source.sendSuccess(() -> Component.literal("Treasure map created"), false);
+        source.sendSuccess(() -> Component.translatable("command.customtreasuremaps.createsuccess"), false);
         return 1;
     }
 }
