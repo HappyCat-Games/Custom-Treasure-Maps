@@ -2,6 +2,7 @@ package games.happycat.customtreasuremaps.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import games.happycat.customtreasuremaps.config.ModServerConfig;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.coordinates.Coordinates;
@@ -20,7 +21,7 @@ import net.minecraft.world.phys.Vec3;
 public class CreateTreasureMapCommand {
     public CreateTreasureMapCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("createtreasuremap")
-                        .requires(p -> p.hasPermission(2))
+                        .requires(p -> p.hasPermission(ModServerConfig.createPermissionLevel.get()))
                 .then(Commands.argument("location", Vec3Argument.vec3())
                         .executes(this::execute)));
 
