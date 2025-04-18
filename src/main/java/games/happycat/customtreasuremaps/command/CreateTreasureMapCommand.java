@@ -10,11 +10,11 @@ import net.minecraft.commands.arguments.coordinates.Vec3Argument;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.component.MapDecorations;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.phys.Vec3;
 
@@ -30,7 +30,7 @@ public class CreateTreasureMapCommand {
     private int execute(CommandContext<CommandSourceStack> context) {
         CommandSourceStack source = context.getSource();
         ServerPlayer player = source.getPlayer();
-        Level level = player.level();
+        ServerLevel level = player.serverLevel();
 
         Coordinates location = Vec3Argument.getCoordinates(context, "location");
         Vec3 pos = location.getPosition(source);
